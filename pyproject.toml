@@ -1,10 +1,9 @@
 [project]
 name = "stellrent-response"
-version = "0.0.3"
+dynamic = ["version", "description"]
 authors = [
   { name="Marcus Rodrigues Magalhães", email="marcusrodrigues.magalhaes@stellantis.com" },
 ]
-description = "Pattern responses for REST API Projects"
 readme = "README.md"
 # license = 'MIT'
 requires-python = '>=3.7'

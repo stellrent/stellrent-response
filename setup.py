@@ -8,8 +8,7 @@ Parts of this file were taken from the pyzmq project
 BSD license. Parts are from lxml (https://github.com/lxml/lxml)
 """
 from setuptools import setup
-
-VERSION = '0.0.3'
+import stellrent_response
 
 with open('requirements.txt') as requirements_file:
     REQUIRED_MODULES = [line.strip() for line in requirements_file]
@@ -23,7 +22,7 @@ def readme():
     
 setup(
     name='stellrent-response',
-    version=VERSION,
+    version=stellrent_response.__version__,
     author='Marcus R. Magalhães',
     author_email='marcusrodrigues.magalhaes@stellantis.com',
     description='Pattern responses for your API Projects',
