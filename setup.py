@@ -8,7 +8,6 @@ Parts of this file were taken from the pyzmq project
 BSD license. Parts are from lxml (https://github.com/lxml/lxml)
 """
 from setuptools import setup
-import stellrent_response
 
 with open('requirements.txt') as requirements_file:
     REQUIRED_MODULES = [line.strip() for line in requirements_file]
@@ -22,7 +21,6 @@ def readme():
     
 setup(
     name='stellrent-response',
-    version=stellrent_response.__version__,
     author='Marcus R. Magalhães',
     author_email='marcusrodrigues.magalhaes@stellantis.com',
     description='Pattern responses for your API Projects',
@@ -32,20 +30,3 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=REQUIRED_MODULES
 )
-
-# if __name__ == "__main__":
-#     # Freeze to support parallel compilation when using spawn instead of fork
-#     multiprocessing.freeze_support()
-#     setup(
-#         name = 'stellrent-response',
-#         version=VERSION,
-#         description='Pattern responses for your API Projects',
-#         long_description=readme(),
-#         keywords='response json api pattern',
-#         author='Marcus R. Magalhães',
-#         author_email='marcusrodrigues.magalhaes@stellantis.com',
-#         packages=['src'],
-#         install_requires = REQUIRED_MODULES,
-#         ext_modules = REQUIRED_DEV_MODULES,
-#         include_package_data=True
-#     )

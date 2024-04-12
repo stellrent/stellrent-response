@@ -1,6 +1,6 @@
 [project]
 name = "stellrent-response"
-dynamic = ["version", "description"]
+version = "0.0.5"
 authors = [
   { name="Marcus Rodrigues Magalhães", email="marcusrodrigues.magalhaes@stellantis.com" },
 ]

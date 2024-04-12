@@ -1,5 +1,13 @@
 {
     "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
     "python.testing.cwd": "${workspaceFolder}",
-    "python.testing.promptToConfigure": false
+    "python.testing.pytestArgs": [
+        "--rootdir",
+        "${workspaceFolder}",
+        "tests"
+    ],
+    "python.testing.promptToConfigure": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "python.terminal.activateEnvInCurrentTerminal": true
 }
