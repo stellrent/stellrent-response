@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: stellrent-response
-Version: 0.0.4
+Version: 0.0.7
 Summary: Pattern responses for your API Projects
 Author: Marcus R. Magalhães
 Author-email: Marcus Rodrigues Magalhães <marcusrodrigues.magalhaes@stellantis.com>
@@ -19,4 +19,17 @@ License-File: LICENSE
 
 # STELLRENT - Response pattern
 
-Pattern responses for REST API Projects
+Pattern responses for REST API Projects using Flask
+
+## Development
+
+### Requirements
+
+* Visual Studio Code v1.95.2
+* Python v3.11.*
+
+### Testing
+Use VS Code snippet "Testing"
+
+### GITHUB Authentication
+Using SSH Authentication keys

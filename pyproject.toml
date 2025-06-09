@@ -1,6 +1,6 @@
 [project]
 name = "stellrent-response"
-version = "0.0.5"
+version = "0.0.7"
 authors = [
   { name="Marcus Rodrigues Magalhães", email="marcusrodrigues.magalhaes@stellantis.com" },
 ]

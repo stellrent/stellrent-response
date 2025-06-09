@@ -7,4 +7,6 @@ PyQt5 >= 5.15.10
 pytest-cov == 4.1.0
 pytest-xdist >= 2.2.0
 pytest-qt >= 4.2.0
+pydantic == 2.11.*
+Flask == 3.1.*
 pytest-localserver
