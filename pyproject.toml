@@ -1,20 +1,26 @@
 [project]
-name = "stellrent-response"
-version = "0.0.7"
+name = "stellrent_response"
+version = "1.1.0"
 authors = [
   { name="Marcus Rodrigues Magalhães", email="marcusrodrigues.magalhaes@stellantis.com" },
 ]
 readme = "README.md"
 # license = 'MIT'
-requires-python = '>=3.7'
+requires-python = '>=3.9'
 classifiers = [
-    'Development Status :: 4 - Beta',
+    'Development Status :: 5 - Production/Stable',
+    'Environment :: Web Environment',
+    'Intended Audience :: Developers',
+    'Natural Language :: English', 
+    'Programming Language :: Python',
     'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
-    'Framework :: Pytest',
-    'Topic :: Software Development :: Libraries :: Python Modules'
+    'Framework :: Flask',
+    'Topic :: Internet :: WWW/HTTP'
 ]
 
 [tool.pytest.ini_options]

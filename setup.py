@@ -20,10 +20,10 @@ def readme():
         return readme_file.read()
     
 setup(
-    name='stellrent-response',
+    name='stellrent_response',
     author='Marcus R. Magalhães',
     author_email='marcusrodrigues.magalhaes@stellantis.com',
-    description='Pattern responses for your API Projects',
+    description='Pattern responses for Flask API Projects',
     packages=['stellrent_response'],
     include_package_data=True,
     long_description=readme(),
