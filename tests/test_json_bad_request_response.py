@@ -57,3 +57,19 @@ def test_response_with_details_and_custom_message():
     assert(response_data_dict['message'] == custom_message)
     assert(response_data_dict['details'] == detailed_error_message)
     assert(response_data_dict['status'] == 400)
+
+def test_response_with_pydantic_validation_error():
+    from pydantic import ValidationError
+    from stellrent_response.test.utils.pydantic_test_schema import TestSchema
+    
+    try:
+        test_schema = TestSchema(name="Adamastor", id="not int", cellphone=None)
+    except ValidationError as e:
+        bad_request_response = json_response.BadRequest(validate_exception=e)
+        assert(bad_request_response.details is not None)
+        response_obj = bad_request_response.make_response()
+        response_data_dict = json.loads(response_obj.get_data())
+        assert(len(response_data_dict) == 3)
+        assert(response_data_dict['message'] == custom_message)
+        assert(response_data_dict['details'] == detailed_error_message)
+        assert(response_data_dict['status'] == 400)
