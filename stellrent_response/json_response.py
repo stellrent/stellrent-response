@@ -290,9 +290,24 @@ class BadRequest(ErrorResponse):
             logger=logger
         )
     def parser_pydantic_validation_error(self, validate_exception: ValidationError):
-        details = None
-        return details
+        list_errors = []
+
+        for error in validate_exception.errors():
+            location = error.get("loc", [])
+
+            if location and (isinstance(location[0], int) or (isinstance(location[0], str) and location[0].isdigit())):
+                location = location[1:]
+
+            field_path = ".".join(str(part) for part in location)
+            list_errors.append({
+                "field": field_path,
+                "message": error.get("msg", "Validation error")
+            })
         
+        return {
+            "ERRORS": list_errors
+        }
+
 
 class Unauthorized(ErrorResponse):
     """
