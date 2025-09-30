@@ -268,6 +268,7 @@ class ErrorResponse(ApiResponse):
 
 
 class BadRequest(ErrorResponse):
+    from pydantic import ValidationError
     """
     Erro 400 Bad Request: A requisição não pôde ser entendida ou processada.
     """
@@ -276,15 +277,24 @@ class BadRequest(ErrorResponse):
         message: Optional[str] = None, # Permite customizar a mensagem
         details: Optional[Any] = None, 
         errors: Optional[List[Dict]] = None, # Para erros de validação de campos
-        logger: Optional[logging.Logger] = None
+        logger: Optional[logging.Logger] = None,
+        validate_exception: Optional[ValidationError] = None, # Permite customizar details com base em um ValidationError(Pydantic)
     ):
+        if validate_exception is not None:
+           details = self.parser_pydantic_validation_error(validate_exception)
         super().__init__(
             status_code=400,
-            message=message, # Passa a mensagem customizada ou None para usar o padrão
+            message=message,
             details=details,
             errors=errors,
             logger=logger
         )
+    def parser_pydantic_validation_error(self, validate_exception: ValidationError) -> List[Dict[str, Any]]:
+        """
+        Converte um Pydantic ValidationError em uma lista de dicionários com detalhes do erro.
+        """
+        return validate_exception.errors()
+        
 
 class Unauthorized(ErrorResponse):
     """

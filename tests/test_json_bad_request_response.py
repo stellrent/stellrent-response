@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field, ValidationError
 detailed_error_message = "A detailed error message"
 custom_message = "A custom Bad Request message"
 default_message = "Bad Request"
+import pytest
 default_content_type = "application/json"
 
 class TestSchema(BaseModel):
@@ -64,12 +65,32 @@ def test_response_with_details_and_custom_message():
     assert(response_data_dict['details'] == detailed_error_message)
     assert(response_data_dict['status'] == 400)
 
-def test_response_with_pydantic_validation_error():  
-    try:
-        test_schema = TestSchema(name="Adamastor", id="not int", cellphone="None")
-    except ValidationError as e:
-        bad_request_response = json_response.BadRequest(validate_exception=e)
-        assert(bad_request_response.details is not None)
+def test_response_with_pydantic_validation_error():
+    """
+    Testa a geração de uma resposta BadRequest a partir de um Pydantic ValidationError.
+    Usa pytest.raises para capturar a exceção de forma idiomática.
+    """
+    with pytest.raises(ValidationError) as excinfo:
+        TestSchema(name="Adamastor", id="not int", cellphone=None)
+
+    # A exceção foi capturada, agora podemos usá-la para criar nossa resposta
+    e = excinfo.value
+    bad_request_response = json_response.BadRequest(validate_exception=e)
+
+    __test_basic_bad_response(bad_request_response)
+    assert bad_request_response.details is not None
+    assert isinstance(bad_request_response.details, list)
+    assert len(bad_request_response.details) == 2 # Esperamos erros para 'id' e 'cellphone'
+
+    response_obj = bad_request_response.make_response()
+    response_data_dict = json.loads(response_obj.get_data())
+
+    assert response_data_dict['details'][0]['loc'] == ['id']
+    assert response_data_dict['details'][0]['msg'] == 'Input should be a valid integer, unable to parse string as an integer'
+    assert response_data_dict['details'][1]['loc'] == ['cellphone']
+    assert response_data_dict['details'][1]['msg'] == 'Input should be a valid string'
+    # bad_request_object = json_response.BadRequest(validate_exception=e)
+    # assert(bad_request_object.details is not None)
         # response_obj = bad_request_response.make_response()
         # response_data_dict = json.loads(response_obj.get_data())
         # assert(len(response_data_dict) == 3)

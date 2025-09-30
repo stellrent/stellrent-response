@@ -289,9 +289,11 @@ class BadRequest(ErrorResponse):
             errors=errors,
             logger=logger
         )
-    def parser_pydantic_validation_error(self, validate_exception: ValidationError):
-        details = None
-        return details
+    def parser_pydantic_validation_error(self, validate_exception: ValidationError) -> List[Dict[str, Any]]:
+        """
+        Converte um Pydantic ValidationError em uma lista de dicionários com detalhes do erro.
+        """
+        return validate_exception.errors()
         
 
 class Unauthorized(ErrorResponse):

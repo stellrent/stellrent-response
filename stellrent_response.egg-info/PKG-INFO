@@ -1,7 +1,6 @@
-Metadata-Version: 2.1
-Name: stellrent-response
-Version: 1.1.0
-Summary: Pattern responses for Flask API Projects
+Metadata-Version: 2.4
+Name: stellrent_response
+Version: 1.3.0
 Author: Marcus R. Magalhães
 Author-email: Marcus Rodrigues Magalhães <marcusrodrigues.magalhaes@stellantis.com>
 Project-URL: Homepage, https://github.com/stellrent/stellrent-response
@@ -22,6 +21,8 @@ Classifier: Topic :: Internet :: WWW/HTTP
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Dynamic: author
+Dynamic: license-file
 
 # STELLRENT - Response pattern
 
