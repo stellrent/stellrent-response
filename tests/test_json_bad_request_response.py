@@ -71,7 +71,7 @@ def test_response_with_pydantic_validation_error():
     Usa pytest.raises para capturar a exceção de forma idiomática.
     """
     with pytest.raises(ValidationError) as excinfo:
-        TestSchema(name="Adamastor", id="not int", cellphone=None)
+        _TestSchema(name="Adamastor", id="not int", cellphone=None)
 
     # A exceção foi capturada, agora podemos usá-la para criar nossa resposta
     e = excinfo.value
