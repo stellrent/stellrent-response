@@ -9,7 +9,7 @@ default_message = "Bad Request"
 import pytest
 default_content_type = "application/json"
 
-class TestSchema(BaseModel):
+class _TestSchema(BaseModel):
     name: str = Field(...)
     id: int = Field(...)
     cellphone: str = Field(...)
