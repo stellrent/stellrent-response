@@ -302,8 +302,7 @@ class BadRequest(ErrorResponse):
             list_errors.append({
                 "field": field_path,
                 "message": error.get("msg", "Validation error")
-            })
-        
+            })        
         return {
             "ERRORS": list_errors
         }
