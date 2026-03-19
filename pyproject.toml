@@ -1,12 +1,17 @@
 [project]
 name = "stellrent_response"
-version = "1.4.0"
+version = "1.4.1"
 authors = [
   { name="Marcus Rodrigues Magalhães", email="marcusrodrigues.magalhaes@stellantis.com" },
 ]
+description = "Pattern responses for Flask API Projects"
 readme = "README.md"
 # license = 'MIT'
 requires-python = '>=3.9'
+dependencies = [
+    "Flask == 3.1.*",
+    "pydantic == 2.11.*"
+]
 classifiers = [
     'Development Status :: 5 - Production/Stable',
     'Environment :: Web Environment',
@@ -17,11 +22,27 @@ classifiers = [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
     'Framework :: Flask',
     'Topic :: Internet :: WWW/HTTP'
 ]
+
+  [project.optional-dependencies]
+  dev = [
+    "wheel == 0.43.0",
+    "twine == 5.0.0",
+    "importlib-metadata == 7.0.2",
+    "build == 1.1.1",
+    "pytest >= 7.3.2",
+    "PyQt5 >= 5.15.10",
+    "pytest-cov == 4.1.0",
+    "pytest-xdist >= 2.2.0",
+    "pytest-qt >= 4.2.0",
+    "pytest-localserver"
+  ]
 
 [tool.pytest.ini_options]
 testpaths = ['tests']

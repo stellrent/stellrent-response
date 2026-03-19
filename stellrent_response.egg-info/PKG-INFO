@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: stellrent_response
-Version: 1.4.0
-Author: Marcus R. Magalhães
+Version: 1.4.1
+Summary: Pattern responses for Flask API Projects
 Author-email: Marcus Rodrigues Magalhães <marcusrodrigues.magalhaes@stellantis.com>
 Project-URL: Homepage, https://github.com/stellrent/stellrent-response
 Project-URL: Issues, https://github.com/stellrent/stellrent-response/issues
@@ -14,6 +14,8 @@ Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.9
 Classifier: Programming Language :: Python :: 3.10
 Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Classifier: Framework :: Flask
@@ -21,7 +23,19 @@ Classifier: Topic :: Internet :: WWW/HTTP
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Dynamic: author
+Requires-Dist: Flask==3.1.*
+Requires-Dist: pydantic==2.11.*
+Provides-Extra: dev
+Requires-Dist: wheel==0.43.0; extra == "dev"
+Requires-Dist: twine==5.0.0; extra == "dev"
+Requires-Dist: importlib-metadata==7.0.2; extra == "dev"
+Requires-Dist: build==1.1.1; extra == "dev"
+Requires-Dist: pytest>=7.3.2; extra == "dev"
+Requires-Dist: PyQt5>=5.15.10; extra == "dev"
+Requires-Dist: pytest-cov==4.1.0; extra == "dev"
+Requires-Dist: pytest-xdist>=2.2.0; extra == "dev"
+Requires-Dist: pytest-qt>=4.2.0; extra == "dev"
+Requires-Dist: pytest-localserver; extra == "dev"
 Dynamic: license-file
 
 # STELLRENT - Response pattern

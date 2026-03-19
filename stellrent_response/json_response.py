@@ -293,19 +293,16 @@ class BadRequest(ErrorResponse):
         list_errors = []
 
         for error in validate_exception.errors():
-            location = error.get("loc", [])
+            parsed_error = dict(error)
+            location = list(parsed_error.get("loc", []))
 
             if location and (isinstance(location[0], int) or (isinstance(location[0], str) and location[0].isdigit())):
                 location = location[1:]
 
-            field_path = ".".join(str(part) for part in location)
-            list_errors.append({
-                "field": field_path,
-                "message": error.get("msg", "Validation error")
-            })        
-        return {
-            "ERRORS": list_errors
-        }
+            parsed_error["loc"] = location
+            list_errors.append(parsed_error)
+
+        return list_errors
 
 
 class Unauthorized(ErrorResponse):
